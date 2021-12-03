@@ -1,7 +1,12 @@
 #include <iostream>
 
+#include "CommandLineInterface.hpp"
+#include "RockPaperScissors.hpp"
+
 int main() {
-  std::cout << "START" << std::endl;
+  CommandLineInterface cli;
+  RockPaperScissors game(cli);
+  game.play();
 
   return 0;
 }
