@@ -1,0 +1,36 @@
+{
+    "tasks": [
+        {
+            "label": "C++: Build",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "${workspaceFolder}/tools/build.sh",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "C++: Test",
+            "type": "shell",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "dependsOn": [
+                "C++: Build"
+            ],
+            "command": "${workspaceFolder}/tools/test_all.sh",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        }
+    ],
+    "version": "2.0.0"
+}

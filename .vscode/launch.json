@@ -1,0 +1,63 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++: gdb: Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            // pre task
+            "preLaunchTask": "C++: Build",
+            // target
+            "program": "${workspaceFolder}/${input:path_to_target}",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            // debuger settings
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "stopAtEntry": false,
+            "externalConsole": false
+        },
+        {
+            "name": "C++: gdb: Attach",
+            "type": "cppdbg",
+            "request": "attach",
+            // target
+            "program": "${workspaceFolder}/${input:path_to_target}",
+            "processId": "${command:pickProcess}",
+            // debuger settings
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+    ],
+    "inputs": [
+        {
+            "id": "path_to_target",
+            "type": "command",
+            // requires: augustocdias.tasks-shell-input
+            "command": "shellCommand.execute",
+            "args": {
+                "description": "Select target binary",
+                "command": "find -type f | grep -Ev '(.git)|(.vscode)|(build)|(.cmake$)|(.cpp$)|(.hpp$)|(.make$)|(.md$)|(.sh$)|(.so$)|(.txt$)'",
+                "cwd": "${workspaceFolder}",
+            }
+        }
+    ]
+}
