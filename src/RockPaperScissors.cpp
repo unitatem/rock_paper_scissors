@@ -1,6 +1,7 @@
 #include "RockPaperScissors.hpp"
 
-RockPaperScissors::RockPaperScissors(GameInterface& gi) : game_interface{gi} {}
+RockPaperScissors::RockPaperScissors(GameInterface& gi, AlgorithmicPlayer& ap)
+    : game_interface{gi}, algo_player{ap} {}
 
 void RockPaperScissors::play() {
   game_interface.welcome();
@@ -10,7 +11,8 @@ void RockPaperScissors::play() {
     Element player_hand = game_interface.getPlayerAction();
     (void)player_hand;
 
-    // TODO NPC
+    Element algo_hand = algo_player.getHand();
+    (void)algo_hand;
 
     // TODO engine
   }

@@ -1,11 +1,13 @@
 #include <iostream>
 
 #include "CommandLineInterface.hpp"
+#include "RandomPlayer.hpp"
 #include "RockPaperScissors.hpp"
 
 int main() {
   CommandLineInterface cli;
-  RockPaperScissors game(cli);
+  RandomPlayer player;
+  RockPaperScissors game(cli, player);
   game.play();
 
   return 0;

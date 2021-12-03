@@ -6,8 +6,13 @@ add_executable(app
     main.cpp
     RockPaperScissors.cpp)
 target_link_libraries(app
+    AlgorithmicPlayer
     GameInterface)
 
 add_library(GameInterface SHARED
     CommandLineInterface.cpp
     GameInterface.cpp)
+
+add_library(AlgorithmicPlayer SHARED
+    AlgorithmicPlayer.cpp
+    RandomPlayer.cpp)

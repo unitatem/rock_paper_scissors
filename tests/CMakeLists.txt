@@ -11,3 +11,9 @@ target_link_libraries(CommandLineInterface_test
   gtest gmock_main
   GameInterface)
 gtest_discover_tests(CommandLineInterface_test)
+
+add_executable(RandomPlayer_test RandomPlayer_test.cpp)
+target_link_libraries(RandomPlayer_test
+  gtest gmock_main
+  AlgorithmicPlayer)
+gtest_discover_tests(RandomPlayer_test)
