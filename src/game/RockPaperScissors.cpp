@@ -24,7 +24,10 @@ void RockPaperScissors::play() {
 // TODO this method should be refactored or Element enum should be refactored
 void RockPaperScissors::evaluateRound(const Element& player_hand,
                                       const Element& algo_hand) {
-  (void)player_hand;
-  (void)algo_hand;
-  // hands2score.at({player_hand, algo_hand})(player2score);
+  PlayOutcome outcome = rules.play(player_hand, algo_hand);
+
+  if (outcome == PlayOutcome::WIN)
+    ++player2score[Player::Human];
+  else if (outcome == PlayOutcome::LOSS)
+    ++player2score[Player::Algorithm];
 }
