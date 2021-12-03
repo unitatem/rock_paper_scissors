@@ -1,6 +1,7 @@
 #include "CommandLineInterface.hpp"
 
 #include <iostream>
+#include <unordered_map>
 
 #include "Logger.hpp"
 
@@ -46,4 +47,12 @@ Element CommandLineInterface::getPlayerAction() const {
 
   // TODO handle evil input
   return Element::Paper;
+}
+
+void CommandLineInterface::showOpponentHand(const Element& hand) const {
+  static std::unordered_map<Element, std::string> hand2name = {
+      {Element::Rock, "Rock"},
+      {Element::Paper, "Paper"},
+      {Element::Scissors, "Scissors"}};
+  output_stream << "Opponent's hand is " << hand2name[hand] << "\n";
 }

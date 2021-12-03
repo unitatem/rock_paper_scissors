@@ -28,6 +28,10 @@ class CommandLineInterfaceTest : public ::testing::Test {
   std::istringstream fake_input;
   std::ostringstream fake_output;
 
+  CommandLineInterface create_SUT() {
+    return CommandLineInterface(fake_input, fake_output);
+  }
+
   CommandLineInterface create_SUT_with(const std::string& user_input) {
     fake_input = std::istringstream(user_input);
     return CommandLineInterface(fake_input, fake_output);
@@ -77,4 +81,37 @@ TEST_F(CommandLineInterfaceTest, getPlayerAction__map_two_fingers_to_scissors) {
 
   // When
   EXPECT_EQ(cli.getPlayerAction(), Element::Scissors);
+}
+
+TEST_F(CommandLineInterfaceTest, showOpponentHand__show_rock) {
+  // Given
+  CommandLineInterface cli = create_SUT();
+
+  // When
+  cli.showOpponentHand(Element::Rock);
+
+  // Then
+  EXPECT_EQ(fake_output.str(), "Opponent's hand is Rock\n");
+}
+
+TEST_F(CommandLineInterfaceTest, showOpponentHand__show_paper) {
+  // Given
+  CommandLineInterface cli = create_SUT();
+
+  // When
+  cli.showOpponentHand(Element::Paper);
+
+  // Then
+  EXPECT_EQ(fake_output.str(), "Opponent's hand is Paper\n");
+}
+
+TEST_F(CommandLineInterfaceTest, showOpponentHand__show_scissors) {
+  // Given
+  CommandLineInterface cli = create_SUT();
+
+  // When
+  cli.showOpponentHand(Element::Scissors);
+
+  // Then
+  EXPECT_EQ(fake_output.str(), "Opponent's hand is Scissors\n");
 }

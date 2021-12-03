@@ -10,8 +10,9 @@ void RockPaperScissors::play() {
 
   for (int round = 1; round <= rounds; ++round) {
     Element player_hand = game_interface.getPlayerAction();
+
     Element algo_hand = algo_player.getHand();
-    // TODO print opponents hand
+    game_interface.showOpponentHand(algo_hand);
 
     evaluateRound(player_hand, algo_hand);
 

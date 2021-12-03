@@ -9,8 +9,8 @@ class GameInterface {
 
   virtual void welcome() const = 0;
   virtual int getNumberOfRounds() const = 0;
-
   virtual Element getPlayerAction() const = 0;
+  virtual void showOpponentHand(const Element& hand) const = 0;
 };
 
 #endif  // GAMEINTERFACE_HPP_
