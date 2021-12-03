@@ -6,6 +6,23 @@
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
 
+// This is a helper function used only in tests in order to make output more
+// clear.
+std::ostream& operator<<(std::ostream& out, const Element& e) {
+  switch (e) {
+    case Element::Rock:
+      out << "Rock";
+      break;
+    case Element::Paper:
+      out << "Paper";
+      break;
+    case Element::Scissors:
+      out << "Scissors";
+      break;
+  }
+  return out;
+}
+
 class CommandLineInterfaceTest : public ::testing::Test {
  protected:
   std::istringstream fake_input;
@@ -37,7 +54,7 @@ TEST_F(CommandLineInterfaceTest, getNumberOfRounds__negative_number) {
 
 TEST_F(CommandLineInterfaceTest, getPlayerAction__map_closed_fist_to_rock) {
   // Given
-  std::string user_input = "F";
+  std::string user_input = "R";
   CommandLineInterface cli = create_SUT_with(user_input);
 
   // When
@@ -46,7 +63,7 @@ TEST_F(CommandLineInterfaceTest, getPlayerAction__map_closed_fist_to_rock) {
 
 TEST_F(CommandLineInterfaceTest, getPlayerAction__map_open_hand_to_paper) {
   // Given
-  std::string user_input = "H";
+  std::string user_input = "P";
   CommandLineInterface cli = create_SUT_with(user_input);
 
   // When
@@ -55,7 +72,7 @@ TEST_F(CommandLineInterfaceTest, getPlayerAction__map_open_hand_to_paper) {
 
 TEST_F(CommandLineInterfaceTest, getPlayerAction__map_two_fingers_to_scissors) {
   // Given
-  std::string user_input = "V";
+  std::string user_input = "S";
   CommandLineInterface cli = create_SUT_with(user_input);
 
   // When
