@@ -1,7 +1,8 @@
 #include "RockPaperScissors.hpp"
 
-RockPaperScissors::RockPaperScissors(GameInterface& gi, AlgorithmicPlayer& ap)
-    : game_interface{gi}, algo_player{ap} {}
+RockPaperScissors::RockPaperScissors(GameInterface& gi, AlgorithmicPlayer& ap,
+                                     Rules& r)
+    : game_interface{gi}, algo_player{ap}, rules{r} {}
 
 void RockPaperScissors::play() {
   game_interface.welcome();
@@ -9,13 +10,21 @@ void RockPaperScissors::play() {
 
   for (int round = 1; round <= rounds; ++round) {
     Element player_hand = game_interface.getPlayerAction();
-    (void)player_hand;
-
     Element algo_hand = algo_player.getHand();
-    (void)algo_hand;
+    // TODO print opponents hand
 
-    // TODO engine
+    evaluateRound(player_hand, algo_hand);
+
+    // TODO show score
   }
 
   // game_interface.results;
+}
+
+// TODO this method should be refactored or Element enum should be refactored
+void RockPaperScissors::evaluateRound(const Element& player_hand,
+                                      const Element& algo_hand) {
+  (void)player_hand;
+  (void)algo_hand;
+  // hands2score.at({player_hand, algo_hand})(player2score);
 }

@@ -12,6 +12,12 @@ target_link_libraries(CommandLineInterface_test
   GameInterface)
 gtest_discover_tests(CommandLineInterface_test)
 
+add_executable(DefaultRules_test DefaultRules_test.cpp)
+target_link_libraries(DefaultRules_test
+  gtest gmock_main
+  Game)
+gtest_discover_tests(DefaultRules_test)
+
 add_executable(RandomPlayer_test RandomPlayer_test.cpp)
 target_link_libraries(RandomPlayer_test
   gtest gmock_main

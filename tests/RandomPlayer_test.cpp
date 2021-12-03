@@ -5,7 +5,7 @@
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
 
-TEST(RandomPlayerTest, goodWeather) {
+TEST(RandomPlayerTest, expect_random_hands_with_uniform_distribution) {
   // Given
   std::unordered_map<Element, int> hand2cnt;
   RandomPlayer player(5ul);
