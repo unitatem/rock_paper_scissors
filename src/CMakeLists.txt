@@ -4,6 +4,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${${PROJECT_NAME}_SOURCE_DIR}/bin)
 
 add_executable(app
     main.cpp
-    CommandLineInterface.cpp
-    GameInterface.cpp
     RockPaperScissors.cpp)
+target_link_libraries(app
+    GameInterface)
+
+add_library(GameInterface SHARED
+    CommandLineInterface.cpp
+    GameInterface.cpp)

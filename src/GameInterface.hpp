@@ -6,7 +6,7 @@ class GameInterface {
   virtual ~GameInterface();
 
   virtual void welcome() const = 0;
-  virtual unsigned getNumberOfRounds() const = 0;
+  virtual int getNumberOfRounds() const = 0;
 };
 
 #endif  // GAMEINTERFACE_HPP_
