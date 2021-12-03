@@ -21,3 +21,8 @@ int CommandLineInterface::getNumberOfRounds() const {
   DEBUG("Number of rounds provided by user: " << rounds);
   return rounds;
 }
+
+Element CommandLineInterface::getPlayerAction() const {
+  // TODO
+  return Element::Paper;
+}
