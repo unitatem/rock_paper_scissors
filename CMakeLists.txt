@@ -20,7 +20,7 @@ add_compile_options(
     # -pedantic Disabled because GoogleTest introduces polution
     )
 
-include_directories(include)
+include_directories(include src)
 add_subdirectory(src)
 
 if (TESTS)

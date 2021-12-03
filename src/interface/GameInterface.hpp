@@ -1,7 +1,7 @@
 #ifndef GAMEINTERFACE_HPP_
 #define GAMEINTERFACE_HPP_
 
-#include "Element.hpp"
+#include "game/Element.hpp"
 
 class GameInterface {
  public:

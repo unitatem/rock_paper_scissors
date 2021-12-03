@@ -1,4 +1,4 @@
-#include "../src/RandomPlayer.hpp"
+#include "algo_player/RandomPlayer.hpp"
 
 #include <unordered_map>
 

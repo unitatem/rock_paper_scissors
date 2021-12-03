@@ -1,4 +1,4 @@
-#include "../src/CommandLineInterface.hpp"
+#include "interface/CommandLineInterface.hpp"
 
 #include <sstream>
 #include <string>

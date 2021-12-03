@@ -1,8 +1,8 @@
 #ifndef ROCKPAPERSCISSORS_HPP_
 #define ROCKPAPERSCISSORS_HPP_
 
-#include "AlgorithmicPlayer.hpp"
-#include "GameInterface.hpp"
+#include "algo_player/AlgorithmicPlayer.hpp"
+#include "interface/GameInterface.hpp"
 
 class RockPaperScissors {
  private:

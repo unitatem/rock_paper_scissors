@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "CommandLineInterface.hpp"
-#include "RandomPlayer.hpp"
-#include "RockPaperScissors.hpp"
+#include "algo_player/RandomPlayer.hpp"
+#include "game/RockPaperScissors.hpp"
+#include "interface/CommandLineInterface.hpp"
 
 int main() {
   CommandLineInterface cli;

@@ -1,7 +1,7 @@
 #ifndef ALGORITHMICPLAYER_HPP_
 #define ALGORITHMICPLAYER_HPP_
 
-#include "Element.hpp"
+#include "game/Element.hpp"
 
 class AlgorithmicPlayer {
  public:
