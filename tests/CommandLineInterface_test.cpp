@@ -115,3 +115,27 @@ TEST_F(CommandLineInterfaceTest, showOpponentHand__show_scissors) {
   // Then
   EXPECT_EQ(fake_output.str(), "Opponent's hand is Scissors\n");
 }
+
+TEST_F(CommandLineInterfaceTest, showScore__round4_player3_opponent1) {
+  // Given
+  CommandLineInterface cli = create_SUT();
+
+  // When
+  cli.showScore(4, 3, 1);
+
+  // Then
+  EXPECT_EQ(fake_output.str(),
+            "Round #4. You have 3 points. Your opponent has 1 point.\n");
+}
+
+TEST_F(CommandLineInterfaceTest, showScore__round3_player1_opponent2) {
+  // Given
+  CommandLineInterface cli = create_SUT();
+
+  // When
+  cli.showScore(3, 1, 2);
+
+  // Then
+  EXPECT_EQ(fake_output.str(),
+            "Round #3. You have 1 point. Your opponent has 2 points.\n");
+}

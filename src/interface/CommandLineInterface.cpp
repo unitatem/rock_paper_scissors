@@ -56,3 +56,12 @@ void CommandLineInterface::showOpponentHand(const Element& hand) const {
       {Element::Scissors, "Scissors"}};
   output_stream << "Opponent's hand is " << hand2name[hand] << "\n";
 }
+
+void CommandLineInterface::showScore(int round, int player,
+                                     int opponent) const {
+  output_stream << "Round #" << round << ". You have " << player << " point";
+  if (player > 1) output_stream << "s";
+  output_stream << ". Your opponent has " << opponent << " point";
+  if (opponent > 1) output_stream << "s";
+  output_stream << ".\n";
+}

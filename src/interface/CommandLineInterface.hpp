@@ -18,6 +18,7 @@ class CommandLineInterface : public GameInterface {
   int getNumberOfRounds() const override;
   Element getPlayerAction() const override;
   void showOpponentHand(const Element& hand) const override;
+  void showScore(int round, int player, int opponent) const override;
 };
 
 #endif  // COMMANDLINEINTERFACE_HPP_
