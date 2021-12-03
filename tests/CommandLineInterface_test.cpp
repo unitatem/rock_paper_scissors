@@ -139,3 +139,45 @@ TEST_F(CommandLineInterfaceTest, showScore__round3_player1_opponent2) {
   EXPECT_EQ(fake_output.str(),
             "Round #3. You have 1 point. Your opponent has 2 points.\n");
 }
+
+TEST_F(CommandLineInterfaceTest, showGameResults__2vs1) {
+  // Given
+  CommandLineInterface cli = create_SUT();
+
+  // When
+  cli.showGameResults(2, 1);
+
+  // Then
+  EXPECT_EQ(fake_output.str(),
+            "Final results\n"
+            "Your score is 2. Your opponent's score is 1.\n"
+            "You WON.\n\n");
+}
+
+TEST_F(CommandLineInterfaceTest, showGameResults__1vs2) {
+  // Given
+  CommandLineInterface cli = create_SUT();
+
+  // When
+  cli.showGameResults(1, 2);
+
+  // Then
+  EXPECT_EQ(fake_output.str(),
+            "Final results\n"
+            "Your score is 1. Your opponent's score is 2.\n"
+            "You LOST.\n\n");
+}
+
+TEST_F(CommandLineInterfaceTest, showGameResults__2vs2) {
+  // Given
+  CommandLineInterface cli = create_SUT();
+
+  // When
+  cli.showGameResults(2, 2);
+
+  // Then
+  EXPECT_EQ(fake_output.str(),
+            "Final results\n"
+            "Your score is 2. Your opponent's score is 2.\n"
+            "It's a TIE.\n\n");
+}

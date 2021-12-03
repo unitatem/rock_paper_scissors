@@ -16,13 +16,14 @@ void RockPaperScissors::play() {
 
     evaluateRound(player_hand, algo_hand);
 
-    // TODO show score
+    game_interface.showScore(round, player2score[Player::Human],
+                             player2score[Player::Algorithm]);
   }
 
-  // game_interface.results;
+  game_interface.showGameResults(player2score[Player::Human],
+                                 player2score[Player::Algorithm]);
 }
 
-// TODO this method should be refactored or Element enum should be refactored
 void RockPaperScissors::evaluateRound(const Element& player_hand,
                                       const Element& algo_hand) {
   PlayOutcome outcome = rules.play(player_hand, algo_hand);
