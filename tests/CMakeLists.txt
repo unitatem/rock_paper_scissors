@@ -23,3 +23,11 @@ target_link_libraries(RandomPlayer_test
   gtest gmock_main
   AlgorithmicPlayer)
 gtest_discover_tests(RandomPlayer_test)
+
+add_executable(RockPaperScissors_test RockPaperScissors_test.cpp)
+target_link_libraries(RockPaperScissors_test
+  gtest gmock_main
+  AlgorithmicPlayer
+  Game
+  GameInterface)
+gtest_discover_tests(RockPaperScissors_test)
