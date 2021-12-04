@@ -4,8 +4,7 @@
 
 RandomPlayer::RandomPlayer(long unsigned seed)
     : random_generator{seed},
-      distribution{0, 2}  // range is inclusive <a, b>
-{}
+      distribution{distribution_min, distribution_max} {}
 
 Element RandomPlayer::getHand() {
   int random_number = distribution(random_generator);
@@ -13,15 +12,9 @@ Element RandomPlayer::getHand() {
   switch (random_number) {
     case 0:
       return Element::Rock;
-      break;
     case 1:
       return Element::Paper;
-      break;
-    case 2:
+    default:
       return Element::Scissors;
-      break;
   }
-
-  // TODO fix impossible case
-  return Element::Rock;
 }

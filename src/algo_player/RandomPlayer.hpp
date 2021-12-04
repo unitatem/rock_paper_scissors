@@ -9,6 +9,8 @@ class RandomPlayer : public AlgorithmicPlayer {
  private:
   std::mt19937 random_generator;
   std::uniform_int_distribution<> distribution;
+  static constexpr int distribution_min = 0;
+  static constexpr int distribution_max = 2;
 
  public:
   RandomPlayer(long unsigned seed = std::random_device()());
