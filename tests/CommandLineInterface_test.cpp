@@ -6,6 +6,8 @@
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
 
+using ::testing::HasSubstr;
+
 // This is a helper function used only in tests in order to make output more
 // clear.
 std::ostream& operator<<(std::ostream& out, const Element& e) {
@@ -37,6 +39,22 @@ class CommandLineInterfaceTest : public ::testing::Test {
     return CommandLineInterface(fake_input, fake_output);
   }
 };
+
+TEST_F(CommandLineInterfaceTest, welcome__welcome_and_explain_rules) {
+  // Given
+  CommandLineInterface cli = create_SUT();
+
+  // When
+  cli.welcome();
+
+  // Then
+  const std::string& output = fake_output.str();
+  EXPECT_THAT(output, HasSubstr("Welcome in Rock-Paper-Scissors Game"));
+  EXPECT_THAT(output, HasSubstr("Actions possible in the game"));
+  EXPECT_THAT(output, HasSubstr("Rock"));
+  EXPECT_THAT(output, HasSubstr("Paper"));
+  EXPECT_THAT(output, HasSubstr("Scissors"));
+}
 
 TEST_F(CommandLineInterfaceTest, getNumberOfRounds__positive_number) {
   // Given
@@ -125,7 +143,7 @@ TEST_F(CommandLineInterfaceTest, showScore__round4_player3_opponent1) {
 
   // Then
   EXPECT_EQ(fake_output.str(),
-            "Round #4. You have 3 points. Your opponent has 1 point.\n");
+            "Round #4. You have 3 points. Your opponent has 1 point.\n\n");
 }
 
 TEST_F(CommandLineInterfaceTest, showScore__round3_player1_opponent2) {
@@ -137,7 +155,7 @@ TEST_F(CommandLineInterfaceTest, showScore__round3_player1_opponent2) {
 
   // Then
   EXPECT_EQ(fake_output.str(),
-            "Round #3. You have 1 point. Your opponent has 2 points.\n");
+            "Round #3. You have 1 point. Your opponent has 2 points.\n\n");
 }
 
 TEST_F(CommandLineInterfaceTest, showGameResults__2vs1) {
