@@ -28,25 +28,23 @@ int CommandLineInterface::getNumberOfRounds() const {
 }
 
 Element CommandLineInterface::getPlayerAction() const {
-  output_stream << "What is your next move? ";
-  char hand;
-  input_stream >> hand;
-  // TODO handle evil input
+  do {
+    output_stream << "What is your next move? ";
+    char hand;
+    input_stream >> hand;
 
-  switch (hand) {
-    case 'R':
-      return Element::Rock;
-      break;
-    case 'P':
-      return Element::Paper;
-      break;
-    case 'S':
-      return Element::Scissors;
-      break;
-  }
+    switch (hand) {
+      case 'R':
+        return Element::Rock;
+      case 'P':
+        return Element::Paper;
+      case 'S':
+        return Element::Scissors;
+    }
 
-  // TODO handle evil input
-  return Element::Paper;
+    output_stream << "Invalid action. Please only use action specified at the "
+                     "begging of the game.\n";
+  } while (true);
 }
 
 void CommandLineInterface::showOpponentHand(const Element& hand) const {

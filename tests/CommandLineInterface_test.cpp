@@ -101,6 +101,20 @@ TEST_F(CommandLineInterfaceTest, getPlayerAction__map_two_fingers_to_scissors) {
   EXPECT_EQ(cli.getPlayerAction(), Element::Scissors);
 }
 
+TEST_F(CommandLineInterfaceTest, getPlayerAction__invalid_input_so_ask_again) {
+  // Given
+  std::string user_input = "AS";
+  CommandLineInterface cli = create_SUT_with(user_input);
+
+  // When
+  EXPECT_EQ(cli.getPlayerAction(), Element::Scissors);
+
+  // Then
+  EXPECT_THAT(fake_output.str(),
+              HasSubstr("Invalid action. Please only use action specified at "
+                        "the begging of the game.\n"));
+}
+
 TEST_F(CommandLineInterfaceTest, showOpponentHand__show_rock) {
   // Given
   CommandLineInterface cli = create_SUT();
