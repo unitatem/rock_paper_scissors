@@ -65,13 +65,16 @@ TEST_F(CommandLineInterfaceTest, getNumberOfRounds__positive_number) {
   EXPECT_EQ(cli.getNumberOfRounds(), 22);
 }
 
-TEST_F(CommandLineInterfaceTest, getNumberOfRounds__negative_number) {
+TEST_F(CommandLineInterfaceTest, getNumberOfRounds__negative_number_ask_again) {
   // Given
-  std::string user_input = "-47";
+  std::string user_input = "-47\n1";
   CommandLineInterface cli = create_SUT_with(user_input);
 
   // When
-  EXPECT_EQ(cli.getNumberOfRounds(), -47);
+  EXPECT_EQ(cli.getNumberOfRounds(), 1);
+
+  // Then
+  EXPECT_THAT(fake_output.str(), HasSubstr("Invalid number.\n"));
 }
 
 TEST_F(CommandLineInterfaceTest, getPlayerAction__map_closed_fist_to_rock) {

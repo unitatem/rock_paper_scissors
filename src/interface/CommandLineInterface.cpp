@@ -18,13 +18,17 @@ void CommandLineInterface::welcome() const {
 }
 
 int CommandLineInterface::getNumberOfRounds() const {
-  output_stream << "How many rounds would you like to play? ";
+  do {
+    output_stream << "How many rounds would you like to play? ";
 
-  int rounds;
-  input_stream >> rounds;
+    int rounds;
+    input_stream >> rounds;
 
-  DEBUG("Number of rounds provided by user: " << rounds);
-  return rounds;
+    DEBUG("Number of rounds provided by user: " << rounds);
+    if (rounds > 0) return rounds;
+
+    output_stream << "Invalid number.\n";
+  } while (true);
 }
 
 Element CommandLineInterface::getPlayerAction() const {
